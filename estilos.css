@@ -11,10 +11,26 @@
 header .container {
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*align-items: center;
+    justify-content: space-between;*/
+}
 
+.identidad {
+    display: flex;
+    align-items: center;   /* Mantiene la foto y el nombre alineados horizontalmente */
+    margin-bottom: 20px;   /* Espacio para separar del menú de abajo */
+}
 
+.foto-perfil {
+    width: 80px;          
+    height: 80px;          
+    border-radius: 50%;    
+    object-fit: cover;     
+    margin-right: 20px;  
 }
 
 header nav ul {
@@ -25,7 +41,8 @@ header nav ul {
 }
 
 header nav ul li {
-    margin-left: 25px; 
+    margin-right: 25px; 
+    
 }
 
 header nav ul li a {
@@ -38,13 +55,9 @@ header nav ul li a:hover {
     text-decoration: underline; 
 }
 
-.foto-perfil {
-    width: 80px;          
-    height: 80px;          
-    border-radius: 50%;    
-    object-fit: cover;     
-    margin-right: 20px;  
-}
+
+
+
 
 /* 2. Aplicamos los colores base al cuerpo de la página. */
 body {

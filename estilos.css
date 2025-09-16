@@ -1,0 +1,84 @@
+/* --- Hoja de Estilos Ultra-Minimalista --- */
+
+/* 1. Definimos la paleta de colores. Esta es la base de nuestro diseño. */
+:root {
+    --color-fondo: #f0f2f5;       
+    --color-texto: #333333;      
+    --color-titulos: #000000;    
+    --color-link: #0076fd;     
+}
+
+header .container {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+header nav ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex;    
+}
+
+header nav ul li {
+    margin-left: 25px; 
+}
+
+header nav ul li a {
+    text-decoration: none; 
+    color: var(--color-link);
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline; 
+}
+
+.foto-perfil {
+    width: 80px;          
+    height: 80px;          
+    border-radius: 50%;    
+    object-fit: cover;     
+    margin-right: 20px;  
+}
+
+/* 2. Aplicamos los colores base al cuerpo de la página. */
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: sans-serif; /* Usamos una fuente genérica y limpia del navegador */
+    /*text-align:center;*/  
+}
+
+/* 3. Asignamos el color principal a todos los títulos. */
+h1, h2, h3 {
+    color: var(--color-titulos);
+}
+
+/* Opcional: Damos un color a los enlaces para que coincidan con la paleta */
+a {
+    color: var(--color-link);
+}
+
+section {
+
+    background-color:#e3e3e3;
+    padding: 25px;
+    margin: 20px 0;
+
+}
+
+.container {
+
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+
+

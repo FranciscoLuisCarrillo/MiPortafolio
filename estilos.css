@@ -92,6 +92,23 @@ section {
     margin: 0 auto;
 }
 
+/* --- Estilos para la Sección de Proyectos --- */
+
+.proyecto-titulo {
+    display: flex;         /* Pone el icono y el título en una fila (LA MISMA LÓGICA) */
+    align-items: center;   /* Los alinea verticalmente por el centro */
+}
+
+.logo-tecnologia {
+    width: 28px;           /* Define el tamaño del icono */
+    height: 28px;
+    margin-right: 12px;    /* Crea un espacio entre el icono y el texto del título */
+}
+
+.proyecto-titulo h3 {
+    margin-bottom: 5px;
+}
+
 
 
 

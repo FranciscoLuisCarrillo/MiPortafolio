@@ -92,7 +92,7 @@ section {
     margin: 0 auto;
 }
 
-/* --- Estilos para la Sección de Proyectos --- */
+/* --- Estilos para la Sección de Proyectos       --- */
 
 .proyecto-titulo {
     display: flex;         /* Pone el icono y el título en una fila (LA MISMA LÓGICA) */

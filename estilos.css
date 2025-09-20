@@ -1,6 +1,4 @@
-/* --- Hoja de Estilos Ultra-Minimalista --- */
-
-/* 1. Definimos la paleta de colores. Esta es la base de nuestro diseño. */
+/* 1. Definimos la paleta de colores.*/
 :root {
     --color-fondo: #f0f2f5;       
     --color-texto: #333333;      
@@ -21,7 +19,7 @@ header .container {
 
 .identidad {
     display: flex;
-    align-items: center;   /* Mantiene la foto y el nombre alineados horizontalmente */
+    align-items: center;   /* Alineacion horizontal */
     margin-bottom: 20px;   /* Espacio para separar del menú de abajo */
 }
 
@@ -55,26 +53,24 @@ header nav ul li a:hover {
     text-decoration: underline; 
 }
 
-
-
-
-
-/* 2. Aplicamos los colores base al cuerpo de la página. */
+/* 2. Colores base del body de la página. */
 body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
-    font-family: sans-serif; /* Usamos una fuente genérica y limpia del navegador */
+    font-family: sans-serif; /* Fuente genérica */
     /*text-align:center;*/  
 }
 
-/* 3. Asignamos el color principal a todos los títulos. */
+/* 3. Color principal de los títulos. */
 h1, h2, h3 {
     color: var(--color-titulos);
+    text-decoration: none;
 }
 
-/* Opcional: Damos un color a los enlaces para que coincidan con la paleta */
+/* Color a los enlaces */
 a {
     color: var(--color-link);
+    text-decoration: none;
 }
 
 section {
@@ -92,21 +88,30 @@ section {
     margin: 0 auto;
 }
 
-/* --- Estilos para la Sección de Proyectos       --- */
+/* Sección de Proyectos  */
 
 .proyecto-titulo {
-    display: flex;         /* Pone el icono y el título en una fila (LA MISMA LÓGICA) */
-    align-items: center;   /* Los alinea verticalmente por el centro */
+    display: flex;         
+    align-items: center;   
 }
 
 .logo-tecnologia {
-    width: 28px;           /* Define el tamaño del icono */
+    width: 28px;       
     height: 28px;
-    margin-right: 12px;    /* Crea un espacio entre el icono y el texto del título */
+    margin-right: 12px;    
 }
 
 .proyecto-titulo h3 {
     margin-bottom: 5px;
+}
+
+/* --- LOGO redes --- */
+
+.logo-redes {
+    width: 40px;
+    height: 40px;
+    margin-top: 15px;
+    margin-right: 15px; /* Espacio para que no se peguen */
 }
 
 

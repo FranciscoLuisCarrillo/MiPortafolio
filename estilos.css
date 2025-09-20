@@ -114,6 +114,19 @@ section {
     margin-right: 15px; /* Espacio para que no se peguen */
 }
 
+/* --- Estilos para la sección "Sobre mí" --- */
 
+.timeline-item {
+    display: flex;         /* La "misma lógica": Pone el logo y el texto en una fila */
+    align-items: flex-start; /* Alinea el logo con el inicio del texto, ideal para párrafos */
+    margin-bottom: 20px;   /* Espacio entre cada renglón (Pasado, Presente, Futuro) */
+}
+
+.timeline-logo {
+    width: 45px;           /* Tamaño de los logos */
+    height: 45px;
+    margin-right: 15px;    /* Espacio entre el logo y el texto */
+    object-fit: contain;   /* Se asegura que el logo se vea completo y no se deforme */
+}
 
 

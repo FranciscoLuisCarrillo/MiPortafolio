@@ -123,10 +123,25 @@ section {
 }
 
 .timeline-logo {
-    width: 45px;           /* Tamaño de los logos */
+    width: 45px;
     height: 45px;
-    margin-right: 15px;    /* Espacio entre el logo y el texto */
-    object-fit: contain;   /* Se asegura que el logo se vea completo y no se deforme */
+    margin-right: 15px;
+    object-fit: contain;   /* Ajusta el logo dentro del espacio */
+    padding: 5px;          /* Añade un pequeño espacio interior */
+    border-radius: 50%;    /* Lo convierte en un círculo */
+    background-color: #fff;/* Le da un fondo blanco al círculo */
+    border: 1px solid #ddd;/* Le da un borde gris claro y sutil */
+    box-sizing: border-box;/* Evita que el padding y borde agranden el tamaño total */
+}
+
+/* Añade esto al final de tu CSS */
+.logo-interactivo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-interactivo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px var(--color-link);
 }
 
 

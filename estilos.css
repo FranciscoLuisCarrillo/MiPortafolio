@@ -63,8 +63,23 @@ body {
 
 /* 3. Color principal de los títulos. */
 h1, h2, h3 {
+    font-family: 'Poppins', sans-serif; /* Usando la fuente que elegimos */
     color: var(--color-titulos);
-    text-decoration: none;
+}
+
+/* --- ESTILOS ESPECÍFICOS para cada título --- */
+h1 {
+    font-size: 2.5rem; /* El título principal, más grande */
+    font-family: 'Enriqueta', serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;   /* Los títulos de sección, medianos */
+}
+
+h3 {
+    font-size: 1.5rem; /* Los subtítulos de proyectos, más pequeños */
 }
 
 /* Color a los enlaces */
@@ -72,6 +87,8 @@ a {
     color: var(--color-link);
     text-decoration: none;
 }
+
+
 
 section {
 

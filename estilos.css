@@ -1,12 +1,12 @@
-/* --- HOJA DE ESTILOS FINAL (Fix: Únicamente Tipografía Responsiva) --- */
+/* --- HOJA DE ESTILOS FINAL (Fix: Uniformidad de Tipografía en Móvil) --- */
 
-/* 1. VARIABLES Y ESTILOS GLOBALES (SIN CAMBIOS) */
+/* 1. VARIABLES Y ESTILOS GLOBALES */
 :root {
-    --color-fondo: #f0f2f5;       /* Gris muy claro */
-    --color-texto: #333333;      /* Gris oscuro */
-    --color-titulos: #000000;    /* Negro */
-    --color-link: #0076fd;     /* Azul primario */
-    --color-tarjetas: #ffffff; /* Blanco para secciones/tarjetas */
+    --color-fondo: #f0f2f5;       
+    --color-texto: #333333;      
+    --color-titulos: #000000;    
+    --color-link: #0076fd;     
+    --color-tarjetas: #ffffff;
 }
 
 body {
@@ -14,6 +14,7 @@ body {
     color: var(--color-texto);
     font-family: 'Lato', sans-serif;
     margin: 0;
+    line-height: 1.5; /* Mejora de legibilidad */
 }
 
 .container {
@@ -22,13 +23,13 @@ body {
     margin: 0 auto;
 }
 
-/* 2. ESTILOS GENERALES DE ELEMENTOS (Únicamente se modifica la tipografía) */
+/* 2. ESTILOS GENERALES DE ELEMENTOS */
 header, section {
     background-color: var(--color-tarjetas);
     margin-top: 20px;
     padding: 25px 0;
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 h1, h2, h3 {
@@ -37,13 +38,10 @@ h1, h2, h3 {
     margin-top: 0;
 }
 
-/* FIX 1: Tipografía Fluida (Responsive) usando clamp() */
-/* H1: Mínimo 2.2rem, crece fluidamente, Máximo 2.5rem */
-h1 { font-size: clamp(2.2rem, 5vw, 2.5rem); } 
-/* H2: Mínimo 2.0rem, crece fluidamente, Máximo 2.2rem */
-h2 { font-size: clamp(2rem, 4.5vw, 2.2rem); } 
-/* H3: Mínimo 1.2rem, crece fluidamente, Máximo 1.4rem */
-h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); }
+/* TAMAÑOS DE ESCRITORIO (Originales) */
+h1 { font-size: 2.2rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.2rem; }
 
 a {
     color: var(--color-link);
@@ -55,7 +53,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* 3. CABECERA Y NAVEGACIÓN (Original) */
+/* 3. CABECERA Y NAVEGACIÓN (Diseño de escritorio: Logo a la izquierda, Nav a la derecha) */
 header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -63,13 +61,15 @@ header {
 
 header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Volvemos a la disposición lateral */
     align-items: center;
 }
 
 .identidad {
     display: flex;
     align-items: center;
+    /* Eliminamos margin-bottom en desktop */
+    margin-bottom: 0; 
 }
 
 .foto-perfil {
@@ -96,6 +96,11 @@ header nav ul li {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+}
+/* Aseguramos que el texto de la línea de tiempo use el tamaño del cuerpo */
+.timeline-item p {
+    font-size: 1rem;
+    margin: 0;
 }
 
 .timeline-logo {
@@ -146,8 +151,15 @@ header nav ul li {
 .proyecto-titulo h3 {
     margin-bottom: 5px;
 }
+/* Aseguramos que el título de proyecto y el enlace mantengan un tamaño uniforme */
+.proyecto-titulo h3, .proyecto-titulo h3 a {
+    font-size: 1rem !important; /* Forzamos tamaño de cuerpo para uniformidad */
+    font-family: 'Lato', sans-serif !important; /* Forzamos fuente de cuerpo */
+    font-weight: 700;
+}
 
-/* 7. NUEVO FORMULARIO DE CONTACTO */
+
+/* 7. FORMULARIO DE CONTACTO */
 .formulario-contacto {
     display: flex;
     flex-direction: column;
@@ -212,54 +224,56 @@ footer {
 }
 
 
-/* 10. RESPONSIVE DESIGN: Ajustes para pantallas pequeñas (Mobile) */
+/* 10. RESPONSIVE DESIGN: Ajustes para uniformidad en Mobile */
 @media (max-width: 600px) {
-    /* Mantenemos el diseño original, pero reorganizamos el header verticalmente */
+    
+    /* FIX 1: Títulos de sección más pequeños y uniformes */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+    
+    /* FIX 2: Tamaño de fuente del cuerpo uniforme (todos los párrafos y listas) */
+    body {
+        font-size: 1rem; 
+    }
+    
+    .timeline-item p {
+        /* Asegura que la lista de sobre mí use 1rem */
+        font-size: 1rem; 
+    }
+    
+    /* FIX 3: Ajuste de la cabecera para que no se desborde, manteniendo la identidad a la izquierda */
     header .container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Apila identidad y nav */
         align-items: center;
     }
     
-    /* La identidad se alinea verticalmente */
     .identidad {
-        flex-direction: column;
-        margin-bottom: 15px;
-    }
-    
-    /* La foto de perfil debe ser un poco más grande en el header móvil */
-    .foto-perfil {
-        width: 70px;
-        height: 70px;
-        margin-right: 0;
         margin-bottom: 10px;
     }
 
     header nav ul {
+        flex-wrap: wrap;
         justify-content: center;
     }
 
     header nav ul li {
-        margin: 0 8px;
+        margin: 5px 8px;
     }
 
-    /* FIX 2: Reducir ligeramente el tamaño de ícono de la línea de tiempo en móvil */
+    /* FIX 4: Pequeño ajuste en el tamaño de los logos de la línea de tiempo */
     .timeline-logo {
         width: 30px;
         height: 30px;
     }
     
-    /* FIX 3: Ajustamos el texto del cuerpo para legibilidad en móvil */
-    body {
-        font-size: 0.95rem;
+    /* FIX 5: Título de proyecto (que era h3) debe ser uniforme */
+    .proyecto-titulo h3, .proyecto-titulo h3 a {
+        font-size: 1rem !important; 
     }
 
-    .conocimientos-logos {
-        gap: 15px;
-    }
-
-    .logo-conocimiento {
-        width: 50px;
-        height: 50px;
+    .logo-tecnologia {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
     }
 }

@@ -250,7 +250,285 @@ footer {
     .identidad {
         margin-bottom: 10px;
     }
+/* --- HOJA DE ESTILOS FINAL (Fix: Uniformidad de Tipografía en Móvil) --- */
 
+/* 1. VARIABLES Y ESTILOS GLOBALES */
+:root {
+    --color-fondo: #f0f2f5;       
+    --color-texto: #333333;      
+    --color-titulos: #000000;    
+    --color-link: #0076fd;     
+    --color-tarjetas: #ffffff;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    line-height: 1.5; /* Mejora de legibilidad */
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 2. ESTILOS GENERALES DE ELEMENTOS */
+header, section {
+    background-color: var(--color-tarjetas);
+    margin-top: 20px;
+    padding: 25px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-titulos);
+    margin-top: 0;
+}
+
+/* TAMAÑOS DE ESCRITORIO (Originales) */
+h1 { font-size: 2.2rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.2rem; }
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 3. CABECERA Y NAVEGACIÓN (Diseño de escritorio: Logo a la izquierda, Nav a la derecha) */
+header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* Volvemos a la disposición lateral */
+    align-items: center;
+}
+
+.identidad {
+    display: flex;
+    align-items: center;
+    /* Eliminamos margin-bottom en desktop */
+    margin-bottom: 0; 
+}
+
+.foto-perfil {
+    width: 50px;           
+    height: 50px;          
+    border-radius: 50%;    
+    object-fit: cover;     
+    margin-right: 10px;
+}
+
+header nav ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex;    
+}
+
+header nav ul li {
+    margin-left: 15px;
+}
+
+/* 4. SECCIÓN "SOBRE MÍ" */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+/* Aseguramos que el texto de la línea de tiempo use el tamaño del cuerpo */
+.timeline-item p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.timeline-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+
+/* 5. NUEVA SECCIÓN "CONOCIMIENTOS" */
+.conocimientos-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.logo-conocimiento {
+    width: 60px;
+    height: 60px;
+}
+
+/* 6. SECCIÓN "PROYECTOS" */
+.proyecto {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.proyecto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.proyecto-titulo {
+    display: flex;         
+    align-items: center;   
+}
+
+.logo-tecnologia {
+    width: 28px;       
+    height: 28px;
+    margin-right: 12px;    
+}
+
+.proyecto-titulo h3 {
+    margin-bottom: 5px;
+}
+/* Aseguramos que el título de proyecto y el enlace mantengan un tamaño uniforme */
+.proyecto-titulo h3, .proyecto-titulo h3 a {
+    font-size: 1rem !important; /* Forzamos tamaño de cuerpo para uniformidad */
+    font-family: 'Lato', sans-serif !important; /* Forzamos fuente de cuerpo */
+    font-weight: 700;
+}
+
+
+/* 7. FORMULARIO DE CONTACTO */
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.formulario-contacto button {
+    background-color: var(--color-link);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-contacto button:hover {
+    background-color: #0056b3;
+}
+
+.social-links-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logo-social {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+/* 8. EFECTO HOVER UNIVERSAL PARA LOGOS */
+.logo-interactivo {
+    transition: transform 0.3s ease;
+}
+
+.logo-interactivo:hover {
+    transform: scale(1.1);
+}
+
+/* 9. PIE DE PÁGINA */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+
+/* 10. RESPONSIVE DESIGN: Ajustes para uniformidad en Mobile */
+@media (max-width: 600px) {
+    
+    /* FIX 1: Títulos de sección más pequeños y uniformes */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+    
+    /* FIX 2: Tamaño de fuente del cuerpo uniforme (todos los párrafos y listas) */
+    body {
+        font-size: 1rem; 
+    }
+    
+    .timeline-item p {
+        /* Asegura que la lista de sobre mí use 1rem */
+        font-size: 1rem; 
+    }
+    
+    /* FIX 3: Ajuste de la cabecera para que no se desborde, manteniendo la identidad a la izquierda */
+    header .container {
+        flex-direction: column; /* Apila identidad y nav */
+        align-items: center;
+    }
+    
+    .identidad {
+        margin-bottom: 10px;
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header nav ul li {
+        margin: 5px 8px;
+    }
+
+    /* FIX 4: Pequeño ajuste en el tamaño de los logos de la línea de tiempo */
+    .timeline-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* FIX 5: Título de proyecto (que era h3) debe ser uniforme */
+    .proyecto-titulo h3, .proyecto-titulo h3 a {
+        font-size: 1rem !important; 
+    }
+
+    .logo-tecnologia {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+}
     header nav ul {
         flex-wrap: wrap;
         justify-content: center;

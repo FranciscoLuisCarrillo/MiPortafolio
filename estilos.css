@@ -1,4 +1,4 @@
-/* --- HOJA DE ESTILOS FINAL --- */
+/* --- HOJA DE ESTILOS FINAL (Optimizado) --- */
 
 /* 1. VARIABLES Y ESTILOS GLOBALES */
 :root {
@@ -14,21 +14,40 @@ body {
     color: var(--color-texto);
     font-family: 'Lato', sans-serif;
     margin: 0;
+    /* Se añade scroll-behavior: smooth para un desplazamiento agradable cuando JS falle o para enlaces externos */
+    scroll-behavior: smooth; 
 }
 
 .container {
     width: 90%;
     max-width: 900px;
-    margin: 0 auto;
+    /* Centrado horizontalmente */
+    margin: 0 auto; 
+    /* Flexbox para centrar contenido verticalmente dentro de secciones 100vh */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado vertical para secciones largas */
+    height: 100%; /* El container debe ocupar la altura de su padre para que justify-content funcione */
 }
 
 /* 2. ESTILOS GENERALES DE ELEMENTOS */
 header, section {
     background-color: var(--color-tarjetas);
-    margin-top: 20px;
+    margin: 20px 0; /* Margen vertical para separar las 'tarjetas' */
     padding: 25px 0;
-    border-radius: 8px; /* Bordes redondeados para las tarjetas */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sombra suave */
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
+    
+    /* --- INICIO: MEJORA CRÍTICA: SECCIONES 100VH --- */
+    /* Asegura que la sección ocupe al menos toda la altura del viewport */
+    min-height: 100vh;
+    /* Usa padding-top/bottom para que el contenido no quede pegado a los bordes */
+    padding-top: 5vh; 
+    padding-bottom: 5vh; 
+    /* Flexbox en la sección para centrar el .container si es necesario */
+    display: flex;
+    align-items: center;
+    /* --- FIN: MEJORA CRÍTICA --- */
 }
 
 h1, h2, h3 {
@@ -48,24 +67,37 @@ a {
 }
 
 /* 3. CABECERA Y NAVEGACIÓN */
+/* Ajuste de header para un mejor look and feel con 100vh */
+header {
+    margin-top: 0; /* Quita el margin superior para empezar justo arriba */
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 header .container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Centrado en el header */
+    justify-content: center; /* Centra el contenido del header verticalmente */
+    text-align: center;
+    height: auto; /* Se ajusta a su contenido dentro del min-height */
 }
 
 .identidad {
     display: flex;
+    flex-direction: column; /* Columna para el header en móvil/pantalla completa */
     align-items: center;
     margin-bottom: 20px;
 }
 
 .foto-perfil {
-    width: 80px;          
-    height: 80px;          
+    width: 100px; /* Tamaño un poco más grande en el header */      
+    height: 100px;          
     border-radius: 50%;    
     object-fit: cover;     
-    margin-right: 20px;  
+    margin-bottom: 15px; /* Ajuste de margen para la disposición en columna */
+    margin-right: 0;
 }
 
 header nav ul {
@@ -73,10 +105,12 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;    
+    flex-wrap: wrap; /* Para asegurar la responsividad */
+    justify-content: center;
 }
 
 header nav ul li {
-    margin-right: 25px; 
+    margin: 0 15px; /* Espacio uniforme */
 }
 
 header nav ul li a:hover {
@@ -86,8 +120,8 @@ header nav ul li a:hover {
 /* 4. SECCIÓN "SOBRE MÍ" */
 .timeline-item {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    align-items: center; /* Centrar verticalmente el logo y el texto */
+    margin-bottom: 30px; /* Más espacio para legibilidad */
 }
 
 .timeline-logo {
@@ -100,6 +134,7 @@ header nav ul li a:hover {
     background-color: #fff;
     border: 1px solid #ddd;
     box-sizing: border-box;
+    flex-shrink: 0; /* Evita que el logo se achique */
 }
 
 /* 5. NUEVA SECCIÓN "CONOCIMIENTOS" */
@@ -107,40 +142,44 @@ header nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; /* Espacio entre logos */
-    padding-top: 20px;
+    gap: 30px; /* Espacio uniforme y grande */
+    padding-top: 30px;
 }
 
 .logo-conocimiento {
-    width: 65px;
-    height: 65px;
+    width: 70px; /* Ligeramente más grandes */
+    height: 70px;
 }
 
 /* 6. SECCIÓN "PROYECTOS" */
 .proyecto {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Separación entre proyectos */
+    border: 1px solid rgba(0,0,0,0.05); /* Borde sutil */
 }
 
 .proyecto:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    background-color: var(--color-fondo); /* Fondo leve al hacer hover */
 }
 
 .proyecto-titulo {
     display: flex;         
     align-items: center;   
+    margin-bottom: 10px;
 }
 
 .logo-tecnologia {
-    width: 28px;       
-    height: 28px;
-    margin-right: 12px;    
+    width: 30px;       
+    height: 30px;
+    margin-right: 15px;    
 }
 
 .proyecto-titulo h3 {
-    margin-bottom: 5px;
+    margin-bottom: 0; /* Se elimina el margen inferior del h3 dentro del proyecto */
 }
 
 /* 7. NUEVO FORMULARIO DE CONTACTO */
@@ -148,7 +187,7 @@ header nav ul li a:hover {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 600px;
+    max-width: 500px; /* Reducido para mejor aspecto en el centro */
     margin: 30px auto;
 }
 
@@ -181,13 +220,13 @@ header nav ul li a:hover {
 
 .social-links-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .logo-social {
-    width: 40px;
-    height: 40px;
-    margin: 0 10px;
+    width: 45px;
+    height: 45px;
+    margin: 0 15px;
 }
 
 /* 8. EFECTO HOVER UNIVERSAL PARA LOGOS */
@@ -196,14 +235,43 @@ header nav ul li a:hover {
 }
 
 .logo-interactivo:hover {
-    transform: scale(1.1);
+    transform: scale(1.15); /* Efecto un poco más notorio */
 }
 
 /* 9. PIE DE PÁGINA */
 footer {
     text-align: center;
     padding: 20px 0;
-    margin-top: 20px;
     font-size: 0.9rem;
     color: #888;
+    background-color: var(--color-tarjetas); /* Se usa el color de las tarjetas para un look más limpio */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.02); /* Sombra sutil superior */
+    margin-top: 0; /* Se ajusta el margen superior */
+}
+
+/* 10. RESPONSIVE DESIGN: Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+    
+    /* El .container ya está centrado con flex en la sección */
+    .container {
+        padding: 0 15px; /* Padding lateral adicional para móvil */
+    }
+
+    /* Reducir el min-height en móviles para evitar el desplazamiento excesivo si el teclado virtual aparece */
+    header, section {
+        min-height: 80vh; 
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
 }

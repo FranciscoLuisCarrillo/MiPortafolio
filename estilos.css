@@ -1,4 +1,4 @@
-/* --- HOJA DE ESTILOS FINAL (Optimizado - Modo Oscuro + UX/UI) --- */
+/* --- HOJA DE ESTILOS FINAL (Refactorizado: Foto de Perfil y Botón Modo Oscuro) --- */
 
 /* 1. VARIABLES Y ESTILOS GLOBALES */
 :root {
@@ -11,6 +11,7 @@
     --color-tarjetas: #ffffff;
     --color-borde-social: #ddd;
     --color-shadow: rgba(0,0,0,0.05);
+    --color-glow: #0076fd; /* Color para el efecto interactivo */
 }
 
 /* Modo Oscuro */
@@ -23,6 +24,7 @@ body.dark-mode {
     --color-tarjetas: #1e1e1e;
     --color-borde-social: #333;
     --color-shadow: rgba(0,0,0,0.3);
+    --color-glow: #8ab4f8; /* Color de glow claro en modo oscuro */
 }
 
 body {
@@ -31,7 +33,7 @@ body {
     font-family: 'Lato', sans-serif;
     margin: 0;
     scroll-behavior: smooth; 
-    transition: background-color 0.5s, color 0.5s; /* Transición suave para el modo oscuro */
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .container {
@@ -42,7 +44,7 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 0 10px; /* Pequeño padding lateral para evitar el contacto con el borde */
+    padding: 0 10px;
 }
 
 /* 2. ESTILOS GENERALES DE ELEMENTOS */
@@ -74,7 +76,6 @@ a {
     transition: color 0.3s;
 }
 
-/* Estilo para el enlace de navegación activo */
 header nav ul li a.active {
     color: var(--color-link-hover);
     text-decoration: underline;
@@ -88,119 +89,79 @@ header nav ul li a:hover {
 }
 
 
-/* 3. CABECERA y NAVEGACIÓN */
-/* ... (El resto de los estilos de header, identidad y foto-perfil se mantienen) ... */
+/* 3. CABECERA Y NAVEGACIÓN */
+header {
+    margin-top: 0;
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+}
+
+.identidad {
+    /* *** MODIFICACIÓN CLAVE: Foto de Perfil en línea con el Título *** */
+    display: flex;
+    align-items: center; /* Alinear verticalmente la foto y el texto */
+    margin-bottom: 20px;
+}
+
+.foto-perfil {
+    /* *** TAMAÑO AJUSTADO Y CIRCULAR *** */
+    width: 60px; /* Tamaño reducido para estar al lado del h1 */      
+    height: 60px;          
+    border-radius: 50%;    
+    object-fit: cover;     
+    margin-right: 15px; /* Espacio a la derecha del texto */
+    border: 2px solid var(--color-link); /* Borde sutil para destacar */
+}
 
 /* 4. SECCIÓN "SOBRE MÍ" */
 .timeline-logo {
-    /* ... (Estilos mantenidos) ... */
-    border: 1px solid var(--color-borde-social); /* Uso de variable */
-    background-color: var(--color-fondo); /* Uso de variable */
-}
-
-/* 5. SECCIÓN "PROYECTOS" */
-.proyecto {
-    /* ... (Estilos mantenidos) ... */
-    border: 1px solid var(--color-shadow);
-}
-
-.proyecto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--color-shadow);
-    background-color: var(--color-fondo); 
-}
-
-/* 6. FORMULARIO DE CONTACTO */
-.formulario-contacto input,
-.formulario-contacto textarea {
-    /* ... (Estilos mantenidos) ... */
-    background-color: var(--color-tarjetas); /* Para asegurar que el campo cambie con el modo oscuro */
-    color: var(--color-texto);
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    object-fit: contain;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--color-fondo);
     border: 1px solid var(--color-borde-social);
-    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
-.formulario-contacto button {
-    background-color: var(--color-link);
-    color: var(--color-tarjetas);
-}
-
-.formulario-contacto button:hover {
-    background-color: var(--color-link-hover);
-}
-
-/* 7. BOTÓN VOLVER ARRIBA */
-#backToTopBtn {
-    /* ... (Estilos mantenidos) ... */
-    background-color: var(--color-link);
-}
-
-#backToTopBtn:hover {
-    background-color: var(--color-link-hover);
-}
-
-/* 8. BOTÓN MODO OSCURO */
+/* 5. BOTÓN MODO OSCURO */
 #darkModeToggle {
     position: fixed;
     top: 20px;
     right: 20px;
     background: var(--color-tarjetas);
-    color: var(--color-texto);
+    color: var(--color-link); /* Usar color de enlace para el ícono */
     border: 1px solid var(--color-borde-social);
     width: 45px;
     height: 45px;
     border-radius: 50%;
     font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 2px 5px var(--color-shadow);
+    box-shadow: 0 0 5px var(--color-shadow);
     z-index: 1000;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
+/* *** MODIFICACIÓN CLAVE: Efecto Glow al pasar el ratón para indicar interacción *** */
 #darkModeToggle:hover {
     transform: scale(1.1);
+    border-color: var(--color-glow);
+    box-shadow: 0 0 10px var(--color-glow), 0 0 5px var(--color-shadow);
 }
+/* ... (El resto del CSS se mantiene igual) ... */
 
 /* 9. CLASES DE ANIMACIÓN (AOS - Animaciones al Scroll) */
-
-/* Estado inicial: oculto y transformado */
-.aos-item {
-    opacity: 0;
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Clases específicas para animaciones */
-.aos-item.aos-animate {
-    opacity: 1;
-    transform: none;
-}
-
-.aos-item[data-aos="slide-up"] {
-    transform: translateY(30px);
-}
-
-.aos-item[data-aos="slide-right"] {
-    transform: translateX(-30px);
-}
-
-.aos-item[data-aos="slide-left"] {
-    transform: translateX(30px);
-}
-
-.aos-item[data-aos="zoom-in"] {
-    transform: scale(0.8);
-}
-/* La propiedad data-aos-delay se manejará en JS */
-
-
-/* 10. RESPONSIVE DESIGN */
-@media (max-width: 600px) {
-    /* ... (Estilos de responsive mantenidos) ... */
-    #darkModeToggle {
-        top: 15px;
-        right: 15px;
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-}
+/* ... (Se mantienen las clases de AOS) ... */

@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyTheme = (isDark) => {
         if (isDark) {
             body.classList.add('dark-mode');
-            icon.classList.replace('fa-sun', 'fa-moon');
+            // Cambiar a ícono de SOL para sugerir el modo CLARO
+            icon.classList.replace('fa-moon', 'fa-sun'); 
             localStorage.setItem('theme', 'dark');
         } else {
             body.classList.remove('dark-mode');
-            icon.classList.replace('fa-moon', 'fa-sun');
+            // Cambiar a ícono de LUNA para sugerir el modo OSCURO
+            icon.classList.replace('fa-sun', 'fa-moon'); 
             localStorage.setItem('theme', 'light');
         }
     };
@@ -91,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================
     const sections = document.querySelectorAll('.content-section');
     const observerOptions = {
-        // El umbral se establece para el 50% de la sección visible para considerarla activa
         rootMargin: '0px',
         threshold: 0.5 
     };
@@ -102,10 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const navLink = document.querySelector(`header nav ul li a[href="${targetId}"]`);
             
             if (navLink) {
-                // Quitamos la clase 'active' de todos los enlaces primero
                 navLinks.forEach(link => link.classList.remove('active'));
 
-                // Si la sección está intersectando (visible) y es la actual, la activamos
                 if (entry.isIntersecting) {
                     navLink.classList.add('active');
                 }
@@ -113,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observamos todas las secciones principales (excepto el header/inicio)
     sections.forEach(section => {
         sectionObserver.observe(section);
     });
@@ -124,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const aosItems = document.querySelectorAll('.aos-item');
     const aosObserverOptions = {
         rootMargin: '0px',
-        threshold: 0.1 // Se activa cuando el 10% del elemento es visible
+        threshold: 0.1 
     };
 
     const aosObserver = new IntersectionObserver((entries, observer) => {
@@ -133,12 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const element = entry.target;
                 const delay = element.getAttribute('data-aos-delay') || 0;
 
-                // Aplicar el retardo si está definido
                 setTimeout(() => {
                     element.classList.add('aos-animate');
                 }, delay);
 
-                // Dejamos de observar el elemento después de animarlo para que no se repita
                 observer.unobserve(element);
             }
         });

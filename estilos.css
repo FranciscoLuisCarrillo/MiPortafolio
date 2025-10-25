@@ -1,30 +1,12 @@
-/* --- HOJA DE ESTILOS FINAL (Refactorizado: Foto de Perfil y Botón Modo Oscuro) --- */
+/* --- HOJA DE ESTILOS FINAL (Optimizado) --- */
 
 /* 1. VARIABLES Y ESTILOS GLOBALES */
 :root {
-    /* Modo Claro (Default) */
     --color-fondo: #f0f2f5;       
     --color-texto: #333333;      
     --color-titulos: #000000;    
     --color-link: #0076fd;     
-    --color-link-hover: #0056b3;
     --color-tarjetas: #ffffff;
-    --color-borde-social: #ddd;
-    --color-shadow: rgba(0,0,0,0.05);
-    --color-glow: #0076fd; /* Color para el efecto interactivo */
-}
-
-/* Modo Oscuro */
-body.dark-mode {
-    --color-fondo: #121212;
-    --color-texto: #e0e0e0;
-    --color-titulos: #ffffff;
-    --color-link: #8ab4f8; /* Un azul claro */
-    --color-link-hover: #5e90e7;
-    --color-tarjetas: #1e1e1e;
-    --color-borde-social: #333;
-    --color-shadow: rgba(0,0,0,0.3);
-    --color-glow: #8ab4f8; /* Color de glow claro en modo oscuro */
 }
 
 body {
@@ -32,35 +14,39 @@ body {
     color: var(--color-texto);
     font-family: 'Lato', sans-serif;
     margin: 0;
+    /* Mejora UX: Scroll suave para los anclajes */
     scroll-behavior: smooth; 
-    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Optimización de fuentes: Asegura que las fuentes se muestren rápidamente */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url('ruta-a-tu-lato-regular.woff2') format('woff2');
+    font-display: swap; 
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url('ruta-a-tu-playfair-bold.woff2') format('woff2');
+    font-display: swap;
 }
 
 .container {
     width: 90%;
     max-width: 900px;
-    margin: 0 auto; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    padding: 0 10px;
+    margin: 0 auto;
 }
 
 /* 2. ESTILOS GENERALES DE ELEMENTOS */
 header, section {
     background-color: var(--color-tarjetas);
-    margin: 20px 0;
+    margin-top: 20px;
     padding: 25px 0;
     border-radius: 8px; 
-    box-shadow: 0 4px 8px var(--color-shadow); 
-    
-    min-height: 100vh;
-    padding-top: 5vh; 
-    padding-bottom: 5vh; 
-    display: flex;
-    align-items: center;
-    transition: background-color 0.5s, box-shadow 0.5s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
 }
 
 h1, h2, h3 {
@@ -69,99 +55,215 @@ h1, h2, h3 {
     margin-top: 0;
 }
 
+h1 { font-size: 2.2rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.2rem; }
+
 a {
     color: var(--color-link);
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
-header nav ul li a.active {
-    color: var(--color-link-hover);
+a:hover {
     text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 5px;
 }
-
-header nav ul li a:hover {
-    color: var(--color-link-hover);
-    text-decoration: underline; 
-}
-
 
 /* 3. CABECERA Y NAVEGACIÓN */
 header {
-    margin-top: 0;
-    min-height: 100vh;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 header .container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: auto;
 }
 
 .identidad {
-    /* *** MODIFICACIÓN CLAVE: Foto de Perfil en línea con el Título *** */
     display: flex;
-    align-items: center; /* Alinear verticalmente la foto y el texto */
-    margin-bottom: 20px;
+    align-items: center;
 }
 
 .foto-perfil {
-    /* *** TAMAÑO AJUSTADO Y CIRCULAR *** */
-    width: 60px; /* Tamaño reducido para estar al lado del h1 */      
-    height: 60px;          
+    width: 50px;           
+    height: 50px;          
     border-radius: 50%;    
     object-fit: cover;     
-    margin-right: 15px; /* Espacio a la derecha del texto */
-    border: 2px solid var(--color-link); /* Borde sutil para destacar */
+    margin-right: 10px;
+}
+
+header nav ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex;    
+}
+
+header nav ul li {
+    margin-left: 15px;
 }
 
 /* 4. SECCIÓN "SOBRE MÍ" */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .timeline-logo {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     margin-right: 15px;
     object-fit: contain;
-    padding: 5px;
-    border-radius: 50%;
-    background-color: var(--color-fondo);
-    border: 1px solid var(--color-borde-social);
+}
+
+/* 5. NUEVA SECCIÓN "CONOCIMIENTOS" */
+.conocimientos-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.logo-conocimiento {
+    width: 60px;
+    height: 60px;
+}
+
+/* 6. SECCIÓN "PROYECTOS" */
+.proyecto {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.proyecto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.proyecto-titulo {
+    display: flex;         
+    align-items: center;   
+}
+
+.logo-tecnologia {
+    width: 28px;       
+    height: 28px;
+    margin-right: 12px;    
+}
+
+.proyecto-titulo h3 {
+    margin-bottom: 5px;
+}
+
+/* 7. FORMULARIO DE CONTACTO */
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
     box-sizing: border-box;
-    flex-shrink: 0;
 }
 
-/* 5. BOTÓN MODO OSCURO */
-#darkModeToggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--color-tarjetas);
-    color: var(--color-link); /* Usar color de enlace para el ícono */
-    border: 1px solid var(--color-borde-social);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 1.2rem;
+.formulario-contacto button {
+    background-color: var(--color-link);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 5px var(--color-shadow);
-    z-index: 1000;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-/* *** MODIFICACIÓN CLAVE: Efecto Glow al pasar el ratón para indicar interacción *** */
-#darkModeToggle:hover {
+.formulario-contacto button:hover {
+    background-color: #0056b3;
+}
+
+.social-links-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logo-social {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+/* 8. EFECTO HOVER UNIVERSAL PARA LOGOS */
+.logo-interactivo {
+    transition: transform 0.3s ease;
+}
+
+.logo-interactivo:hover {
     transform: scale(1.1);
-    border-color: var(--color-glow);
-    box-shadow: 0 0 10px var(--color-glow), 0 0 5px var(--color-shadow);
 }
-/* ... (El resto del CSS se mantiene igual) ... */
 
-/* 9. CLASES DE ANIMACIÓN (AOS - Animaciones al Scroll) */
-/* ... (Se mantienen las clases de AOS) ... */
+/* 9. PIE DE PÁGINA */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+
+/* 10. RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .identidad {
+        margin-bottom: 15px;
+    }
+
+    header nav ul {
+        justify-content: center;
+    }
+
+    header nav ul li {
+        margin: 0 8px;
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .timeline-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .conocimientos-logos {
+        gap: 15px;
+    }
+
+    .logo-conocimiento {
+        width: 50px;
+        height: 50px;
+    }
+}

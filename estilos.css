@@ -1,12 +1,12 @@
-/* --- HOJA DE ESTILOS FINAL (Optimizado) --- */
+/* --- HOJA DE ESTILOS FINAL (Fix: Únicamente Tipografía Responsiva) --- */
 
-/* 1. VARIABLES Y ESTILOS GLOBALES */
+/* 1. VARIABLES Y ESTILOS GLOBALES (SIN CAMBIOS) */
 :root {
-    --color-fondo: #f0f2f5;       
-    --color-texto: #333333;      
-    --color-titulos: #000000;    
-    --color-link: #0076fd;     
-    --color-tarjetas: #ffffff;
+    --color-fondo: #f0f2f5;       /* Gris muy claro */
+    --color-texto: #333333;      /* Gris oscuro */
+    --color-titulos: #000000;    /* Negro */
+    --color-link: #0076fd;     /* Azul primario */
+    --color-tarjetas: #ffffff; /* Blanco para secciones/tarjetas */
 }
 
 body {
@@ -14,24 +14,6 @@ body {
     color: var(--color-texto);
     font-family: 'Lato', sans-serif;
     margin: 0;
-    /* Mejora UX: Scroll suave para los anclajes */
-    scroll-behavior: smooth; 
-}
-
-/* Optimización de fuentes: Asegura que las fuentes se muestren rápidamente */
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lato Regular'), local('Lato-Regular'), url('ruta-a-tu-lato-regular.woff2') format('woff2');
-    font-display: swap; 
-}
-@font-face {
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url('ruta-a-tu-playfair-bold.woff2') format('woff2');
-    font-display: swap;
 }
 
 .container {
@@ -40,7 +22,7 @@ body {
     margin: 0 auto;
 }
 
-/* 2. ESTILOS GENERALES DE ELEMENTOS */
+/* 2. ESTILOS GENERALES DE ELEMENTOS (Únicamente se modifica la tipografía) */
 header, section {
     background-color: var(--color-tarjetas);
     margin-top: 20px;
@@ -55,9 +37,13 @@ h1, h2, h3 {
     margin-top: 0;
 }
 
-h1 { font-size: 2.2rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.2rem; }
+/* FIX 1: Tipografía Fluida (Responsive) usando clamp() */
+/* H1: Mínimo 2.2rem, crece fluidamente, Máximo 2.5rem */
+h1 { font-size: clamp(2.2rem, 5vw, 2.5rem); } 
+/* H2: Mínimo 2.0rem, crece fluidamente, Máximo 2.2rem */
+h2 { font-size: clamp(2rem, 4.5vw, 2.2rem); } 
+/* H3: Mínimo 1.2rem, crece fluidamente, Máximo 1.4rem */
+h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); }
 
 a {
     color: var(--color-link);
@@ -69,7 +55,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* 3. CABECERA Y NAVEGACIÓN */
+/* 3. CABECERA Y NAVEGACIÓN (Original) */
 header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -161,7 +147,7 @@ header nav ul li {
     margin-bottom: 5px;
 }
 
-/* 7. FORMULARIO DE CONTACTO */
+/* 7. NUEVO FORMULARIO DE CONTACTO */
 .formulario-contacto {
     display: flex;
     flex-direction: column;
@@ -226,15 +212,27 @@ footer {
 }
 
 
-/* 10. RESPONSIVE DESIGN */
+/* 10. RESPONSIVE DESIGN: Ajustes para pantallas pequeñas (Mobile) */
 @media (max-width: 600px) {
+    /* Mantenemos el diseño original, pero reorganizamos el header verticalmente */
     header .container {
         flex-direction: column;
         text-align: center;
+        align-items: center;
     }
-
+    
+    /* La identidad se alinea verticalmente */
     .identidad {
+        flex-direction: column;
         margin-bottom: 15px;
+    }
+    
+    /* La foto de perfil debe ser un poco más grande en el header móvil */
+    .foto-perfil {
+        width: 70px;
+        height: 70px;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 
     header nav ul {
@@ -245,17 +243,15 @@ footer {
         margin: 0 8px;
     }
 
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.6rem; }
-
-    .timeline-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
+    /* FIX 2: Reducir ligeramente el tamaño de ícono de la línea de tiempo en móvil */
     .timeline-logo {
-        margin-right: 0;
-        margin-bottom: 10px;
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* FIX 3: Ajustamos el texto del cuerpo para legibilidad en móvil */
+    body {
+        font-size: 0.95rem;
     }
 
     .conocimientos-logos {
